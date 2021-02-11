@@ -78,6 +78,36 @@ const engineerInfo = async() => {
     });
     addRole();
 };
+
+//Gather info for Intern
+const internInfo = async() => {
+    await inquirer.prompt([{
+            type: 'input',
+            name: 'name',
+            message: "What is the intern's name?"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "What is the intern's ID?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the intern's email address?"
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "What is the intern's alma mater?"
+        }
+    ]).then(response => {
+        const intern = new Intern(response.name, response.id, response.email, response.school);
+        employees.push(intern);
+        return intern;
+    });
+    addRole();
+};
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
