@@ -132,10 +132,33 @@ const whatRole = () => {
         };
     });
 };
+
+//Prompting the user to add another employee
+const addRole = () => {
+    inquirer.prompt([{
+        type: 'confirm',
+        name: 'addMore',
+        message: "Would you like to add another employee?"
+    }]).then(response => {
+        if (response.addMore) {
+            whatRole();
+        } else {
+            console.log("You have successfully added new employees!");
+            buildTeam();
+        };
+    });
+};
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+buildTeam = () => {
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    fs.writeFileSync(outputPath, render(employees), 'UTF-8')
+}
 
+whatRole();
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
 // `output` folder. You can use the variable `outputPath` above target this location.
