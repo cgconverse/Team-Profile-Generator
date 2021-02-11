@@ -15,6 +15,7 @@ const render = require("./lib/htmlRenderer");
 // and to create objects for each team member (using the correct classes as blueprints!)
 const employees = [];
 
+//Gather info for manager
 const managerInfo = async() => {
     await inquirer.prompt([{
         type: 'input',
@@ -39,14 +40,44 @@ const managerInfo = async() => {
         name: 'officeNumber',
         message: 'What is the manager`s office number?'
     }
-    
+
 ]).then(response => {
     const manager = new Manager(response.name, response.id, response.email, response.officeNumber);
         employees.push(manager);
         return manager;
 });
     addRole();
-}
+};
+
+//Gather info for Engineer
+const engineerInfo = async() => {
+    await inquirer.prompt([{
+            type: 'input',
+            name: 'name',
+            message: "What is the engineer's name?"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "What is the engineer's ID?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "What is the engineer's email address?"
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: "What is the engineer's GitHub username?"
+        }
+    ]).then(response => {
+        const engineer = new Engineer(response.name, response.id, response.email, response.github);
+        employees.push(engineer);
+        return engineer;
+    });
+    addRole();
+};
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
