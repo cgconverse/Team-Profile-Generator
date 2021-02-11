@@ -108,6 +108,30 @@ const internInfo = async() => {
     });
     addRole();
 };
+
+//Prompting the user to choose an employee role
+const whatRole = () => {
+    inquirer.prompt([{
+        type: 'list',
+        name: 'role',
+        message: "Please choose an employee role to input.",
+        choices: ['Manager', 'Engineer', 'Intern']
+    }]).then(response => {
+        switch (response.role) {
+            case 'Manager':
+                managerInfo();
+                break;
+            case 'Engineer':
+                engineerInfo();
+                break;
+            case 'Intern':
+                internInfo();
+                break;
+            default:
+                return;
+        };
+    });
+};
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
