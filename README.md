@@ -7,3 +7,11 @@ The application will prompt the user for information about the team manager and 
 As a manager
 I want to generate a webpage that displays my team's basic info
 so that I have quick access to emails and GitHub profiles
+
+## Screenshot
+![Screenshot](Assets/images/TeamProfileGenerator.png)
+
+## Links
+
+Repo:
+Deployed Application:
