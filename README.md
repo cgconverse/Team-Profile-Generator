@@ -11,6 +11,9 @@ so that I have quick access to emails and GitHub profiles
 ## Screenshot
 ![Screenshot](Assets/images/TeamProfileGenerator.png)
 
+## Demo
+![Screenshot](Assets/images/TeamProfileGenerator.gif)
+
 ## Link
 
 Repo: https://github.com/cgconverse/Team-Profile-Generator
